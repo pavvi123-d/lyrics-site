@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8" />
+  <title>తెలుగు క్రైస్తవ పాటలు</title>
+  <style>
+    body {
+      font-family: 'Noto Sans Telugu', sans-serif;
+      background-color: #f3f8ff;
+      color: #333;
+      padding: 20px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+    .song {
+      background: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    pre {
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+    #noResults {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎶 తెలుగు క్రైస్తవ గీతాలు 🎶</h1>
+    <input type="text" id="searchBox" placeholder="పాట లేదా పదాలతో వెతకండి..." />
+  </header>
+
+  <section class="song">
+    <h2>నా ప్రాణమంతయు నీదే ప్రభూ</h2>
+    <pre>
+నా ప్రాణమంతయు నీదే ప్రభూ
+నీవే నాకు ఆశ్రయం...
+నీ సన్నిధిలో ఉండాలనేది నా కోరిక...
+    </pre>
+  </section>
+
+  <section class="song">
+    <h2>సిలువ పై ప్రేమ కనిపించినది</h2>
+    <pre>
+సిలువ పై ప్రేమ కనిపించినది
+ఆ ప్రేమకు సాటి లేను లోకములో...
+ప్రాణాన్ని అర్పించావు నను రక్షించుటకు
+    </pre>
+  </section>
+
+  <section class="song">
+    <h2>యేసయ్య నన్ను నడిపించేవాడివి</h2>
+    <pre>
+యేసయ్య నన్ను నడిపించేవాడివి
+నా బలమయ్యావు నీవే ప్రభు...
+ఎన్నాళ్ళకైనా నీ తోడే నాకు చాలు
+    </pre>
+  </section>
+
+  <p id="noResults">పాటలు లభించలేదు.</p>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const songs = document.querySelectorAll(".song");
+    const noResults = document.getElementById("noResults");
+
+    searchBox.addEventListener("input", () => {
+      const query = searchBox.value.toLowerCase();
+      let found = false;
+
+      songs.forEach(song => {
+        const text = song.textContent.toLowerCase();
+        const match = text.includes(query);
+        song.style.display = match ? "block" : "none";
+        if (match) found = true;
+      });
+
+      noResults.style.display = found ? "none" : "block";
+    });
+  </script>
+</body>
+</html>
