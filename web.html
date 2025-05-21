@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Song Lyrics</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>🎵 My Favorite Song Lyrics 🎵</h1>
+    <input type="text" id="searchBox" placeholder="Search songs..." />
+  </header>
+
+  <section class="song">
+    <h2>Perfect - Ed Sheeran</h2>
+    <pre>
+I found a love for me
+Darling, just dive right in and follow my lead...
+    </pre>
+  </section>
+
+  <section class="song">
+    <h2>Someone Like You - Adele</h2>
+    <pre>
+I heard that you're settled down
+That you found a girl and you're married now...
+    </pre>
+  </section>
+
+  <section class="song">
+    <h2>Let Her Go - Passenger</h2>
+    <pre>
+Well you only need the light when it's burning low
+Only miss the sun when it starts to snow
+Only know you love her when you let her go...
+    </pre>
+  </section>
+
+  <section class="song">
+    <h2>Love Story - Taylor Swift</h2>
+    <pre>
+We were both young when I first saw you
+I close my eyes and the flashback starts
+I'm standing there on a balcony in summer air...
+    </pre>
+  </section>
+
+  <section class="song">
+    <h2>See You Again - Wiz Khalifa ft. Charlie Puth</h2>
+    <pre>
+It's been a long day without you, my friend
+And I'll tell you all about it when I see you again...
+    </pre>
+  </section>
+
+  <p id="noResults" style="text-align:center; display:none; color:red; font-weight:bold;">
+    No matching lyrics found.
+  </p>
+
+  <footer>
+    <p>&copy; 2025 My Lyrics Collection</p>
+  </footer>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    searchBox.addEventListener("input", function () {
+      const query = searchBox.value.toLowerCase();
+      const songs = document.querySelectorAll(".song");
+
+      let matchFound = false;
+
+      songs.forEach(song => {
+        const text = song.textContent.toLowerCase();
+        const isVisible = text.includes(query);
+        song.style.display = isVisible ? "block" : "none";
+        if (isVisible) matchFound = true;
+      });
+
+      const noResults = document.getElementById("noResults");
+      noResults.style.display = matchFound ? "none" : "block";
+    });
+  </script>
+</body>
+</html>
